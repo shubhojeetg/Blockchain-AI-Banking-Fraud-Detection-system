@@ -2,37 +2,7 @@
 
 ## Overview
 
-The Blockchain-Based AI Loan Fraud Detection System is a full-stack fintech application that helps banks identify suspicious and fraudulent loan enquiries before processing loans.
-
-The system performs fraud analysis using a risk-based AI logic engine and stores every enquiry inside a blockchain ledger to ensure data integrity, transparency, and tamper-proof record keeping.
-
----
-
-## Project Highlights
-
-* Full Stack Application
-* Fraud Detection Engine
-* Blockchain-Based Record Storage
-* Real-Time Dashboard Analytics
-* Employee Authentication System
-* MongoDB Integration
-* React + FastAPI Architecture
-
----
-
-## Problem Statement
-
-Banks receive a large number of loan enquiries every day.
-
-Manual verification can miss suspicious activities such as:
-
-* Multiple enquiries using the same PAN
-* Same phone number linked to multiple PAN cards
-* Unusually large loan requests
-* Customers hiding existing liabilities
-* Duplicate asset loan requests
-
-This project automates fraud detection and creates an immutable blockchain audit trail for every enquiry.
+The Blockchain-Based AI Loan Fraud Detection System is a full-stack fintech application that helps banks identify suspicious and fraudulent loan enquiries before loan processing. The system uses AI-based risk analysis and blockchain technology to ensure secure, tamper-proof record management.
 
 ---
 
@@ -40,28 +10,29 @@ This project automates fraud detection and creates an immutable blockchain audit
 
 ### Employee Authentication
 
-* Secure Login System
 * Employee Registration
+* Secure Login
 * Password Hashing
 
 ### Loan Enquiry Processing
 
 * Customer Information Collection
 * PAN Validation
-* Loan Type Selection
 * Risk Analysis
+* Loan Classification
 
-### Fraud Detection
+### Fraud Detection Engine
 
 * Risk Score Calculation
-* Genuine Classification
-* Suspicious Classification
-* Fraud Classification
+* Genuine Detection
+* Suspicious Detection
+* Fraud Detection
+* PAN-Phone Linkage Analysis
 
 ### Blockchain Security
 
-* Blockchain Ledger
 * SHA-256 Hashing
+* Blockchain Ledger
 * Blockchain Validation
 * Tamper Detection
 
@@ -71,8 +42,8 @@ This project automates fraud detection and creates an immutable blockchain audit
 * Fraud Cases
 * Genuine Cases
 * Blockchain Status
-* Fraud Distribution Chart
-* Recent Enquiries Table
+* Fraud Analytics Chart
+* Recent Enquiries
 
 ---
 
@@ -125,96 +96,29 @@ Ledger
 
 ---
 
-## Workflow
+## Fraud Detection Logic
 
-### Step 1
-
-Employee logs into the system.
-
-### Step 2
-
-Employee creates a loan enquiry.
-
-### Step 3
-
-Backend validates PAN number.
-
-### Step 4
-
-Fraud Detection Engine calculates risk score.
-
-### Step 5
-
-Enquiry is classified as:
-
-* Genuine
-* Suspicious
-* Fraud
-
-### Step 6
-
-Record is stored in MongoDB.
-
-### Step 7
-
-Blockchain block is generated.
-
-### Step 8
-
-Dashboard analytics update automatically.
-
----
-
-## Fraud Detection Rules
+The system calculates a risk score using the following rules:
 
 ### Rule 1
 
-High loan amount compared to income.
-
-Example:
-
-```text
-Income = ₹7,00,000
-Requested Loan = ₹50,00,000
-```
-
-Risk score increases.
-
----
+Requested loan amount is significantly higher than annual income.
 
 ### Rule 2
 
-Too many existing loans.
-
-```text
-Existing Loans >= 3
-```
-
-Risk score increases.
-
----
+Customer has too many existing loans.
 
 ### Rule 3
 
 Customer already owns a car but requests a car loan.
 
-Risk score increases.
-
----
-
 ### Rule 4
 
-Multiple enquiries using the same PAN.
-
-Risk score increases.
-
----
+Multiple enquiries are found using the same PAN.
 
 ### Rule 5
 
-Same phone number linked with different PAN numbers.
-
-Risk score increases significantly.
+The same phone number is linked to multiple PAN numbers.
 
 ---
 
@@ -230,21 +134,9 @@ Risk score increases significantly.
 
 ## Blockchain Implementation
 
-Each enquiry becomes a blockchain block.
+Each loan enquiry is converted into a blockchain block.
 
-### Block Structure
-
-```json
-{
-  "index": 1,
-  "timestamp": "2026-01-01",
-  "data": {},
-  "previous_hash": "...",
-  "hash": "..."
-}
-```
-
-### Block Contents
+Every block contains:
 
 * Block Index
 * Timestamp
@@ -252,28 +144,12 @@ Each enquiry becomes a blockchain block.
 * Previous Hash
 * Current Hash
 
-### Benefits
+Benefits:
 
-* Tamper Proof Records
+* Tamper-Proof Records
 * Immutable Audit Trail
 * Blockchain Validation
-* Secure Data Storage
-
----
-
-## Database Collections
-
-### bank_users
-
-Stores employee credentials.
-
-### enquiries
-
-Stores loan enquiry records.
-
-### blockchain
-
-Stores blockchain blocks.
+* Secure Record Storage
 
 ---
 
@@ -292,7 +168,7 @@ POST /login
 POST /loan-enquiry
 ```
 
-### Analytics
+### Dashboard
 
 ```http
 GET /dashboard-stats
@@ -312,31 +188,25 @@ GET /validate-blockchain
 
 ## Login Page
 
-![Login](screenshots/bank%20login.png)
-
----
+![Login](bank%20login.png)
 
 ## Dashboard
 
-![Dashboard](screenshots/dashboard.png)
-
----
+![Dashboard](dashboard.png)
 
 ## Loan Enquiry Form
 
-![Loan Enquiry](screenshots/loan%20enquiry%20form.png)
-
----
+![Loan Enquiry](loan%20enquiry%20form.png)
 
 ## Blockchain Viewer
 
-![Blockchain Viewer](screenshots/blockchain%20viewer.png)
+![Blockchain Viewer](blockchain%20viewer.png)
 
 ---
 
 ## Future Enhancements
 
-* Machine Learning Fraud Detection Model
+* Machine Learning Fraud Detection
 * OCR PAN Verification
 * Aadhaar Verification
 * JWT Authentication
@@ -346,23 +216,18 @@ GET /validate-blockchain
 
 ---
 
-## Interview Talking Points
+## Interview Highlights
 
-### AI Component
+This project demonstrates:
 
-Currently uses rule-based fraud analysis and risk scoring. The system can later be upgraded with machine learning models trained on historical banking fraud datasets.
-
-### Blockchain Component
-
-Each enquiry is stored as a blockchain block. Hash linkage and blockchain validation ensure records cannot be modified without detection.
-
-### Database
-
-MongoDB stores employee accounts, loan enquiries, and blockchain records.
-
-### Full Stack Development
-
-The project demonstrates integration of React frontend, FastAPI backend, MongoDB database, blockchain concepts, analytics dashboards, and fraud detection logic.
+* Full Stack Development
+* React Frontend Development
+* FastAPI Backend Development
+* MongoDB Integration
+* Blockchain Implementation
+* Fraud Detection Systems
+* Secure Application Design
+* Dashboard Analytics
 
 ---
 
@@ -372,4 +237,4 @@ The project demonstrates integration of React frontend, FastAPI backend, MongoDB
 
 Blockchain-Based AI Loan Fraud Detection System
 
-Built using React, FastAPI, MongoDB, Blockchain Technology, and Fraud Detection Analytics.
+Built using React, FastAPI, MongoDB, Blockchain Technology, and Fraud Analytics.

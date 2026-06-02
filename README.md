@@ -2,63 +2,77 @@
 
 ## Overview
 
-The Blockchain-Based AI Loan Fraud Detection System is a full-stack fintech application designed to help banks identify suspicious or fraudulent loan enquiries before loan processing.
+The Blockchain-Based AI Loan Fraud Detection System is a full-stack fintech application that helps banks identify suspicious and fraudulent loan enquiries before processing loans.
 
-The system analyzes customer loan enquiries using a risk-based fraud detection engine and securely stores every enquiry in a blockchain ledger to ensure data integrity and prevent tampering.
+The system performs fraud analysis using a risk-based AI logic engine and stores every enquiry inside a blockchain ledger to ensure data integrity, transparency, and tamper-proof record keeping.
+
+---
+
+## Project Highlights
+
+* Full Stack Application
+* Fraud Detection Engine
+* Blockchain-Based Record Storage
+* Real-Time Dashboard Analytics
+* Employee Authentication System
+* MongoDB Integration
+* React + FastAPI Architecture
 
 ---
 
 ## Problem Statement
 
-Banks receive a large number of loan enquiries every day. Manual verification can be time-consuming and may fail to detect suspicious patterns such as:
+Banks receive a large number of loan enquiries every day.
+
+Manual verification can miss suspicious activities such as:
 
 * Multiple enquiries using the same PAN
-* Same phone number linked to different PANs
-* Unusually high loan requests compared to income
-* Customers requesting assets they already own
-* Excessive existing loans
+* Same phone number linked to multiple PAN cards
+* Unusually large loan requests
+* Customers hiding existing liabilities
+* Duplicate asset loan requests
 
-This project automates fraud analysis and creates a tamper-proof audit trail using blockchain technology.
+This project automates fraud detection and creates an immutable blockchain audit trail for every enquiry.
 
 ---
 
-## Key Features
+## Features
 
 ### Employee Authentication
 
-* Secure employee login
-* Password hashing
-* Bank employee management
+* Secure Login System
+* Employee Registration
+* Password Hashing
 
-### Loan Enquiry Management
+### Loan Enquiry Processing
 
-* Customer information collection
-* PAN validation
-* Loan type selection
-* Risk analysis
+* Customer Information Collection
+* PAN Validation
+* Loan Type Selection
+* Risk Analysis
 
-### Fraud Detection Engine
+### Fraud Detection
 
-* Risk scoring mechanism
-* Fraud classification
-* Suspicious activity detection
-* PAN-phone linkage analysis
+* Risk Score Calculation
+* Genuine Classification
+* Suspicious Classification
+* Fraud Classification
 
 ### Blockchain Security
 
-* Immutable record storage
-* SHA-256 hashing
-* Blockchain validation
-* Tamper detection
+* Blockchain Ledger
+* SHA-256 Hashing
+* Blockchain Validation
+* Tamper Detection
 
 ### Dashboard Analytics
 
-* Total enquiries
-* Fraud cases
-* Genuine cases
-* Blockchain statistics
-* Fraud analytics chart
-* Recent enquiries table
+* Total Enquiries
+* Fraud Cases
+* Genuine Cases
+* Blockchain Status
+* Fraud Distribution Chart
+* Recent Enquiries Table
 
 ---
 
@@ -81,10 +95,10 @@ This project automates fraud analysis and creates a tamper-proof audit trail usi
 
 * MongoDB
 
-### Security & Blockchain
+### Security
 
 * SHA-256 Hashing
-* Custom Blockchain Implementation
+* Blockchain Validation
 
 ---
 
@@ -111,7 +125,7 @@ Ledger
 
 ---
 
-## Application Workflow
+## Workflow
 
 ### Step 1
 
@@ -139,7 +153,7 @@ Enquiry is classified as:
 
 ### Step 6
 
-Enquiry is stored in MongoDB.
+Record is stored in MongoDB.
 
 ### Step 7
 
@@ -151,27 +165,26 @@ Dashboard analytics update automatically.
 
 ---
 
-## Fraud Detection Logic
+## Fraud Detection Rules
 
-The project currently uses a rule-based AI fraud detection system.
+### Rule 1
 
-### Rules Used
+High loan amount compared to income.
 
-#### High Loan Amount
-
-If:
+Example:
 
 ```text
-Requested Amount > Annual Income × 5
+Income = ₹7,00,000
+Requested Loan = ₹50,00,000
 ```
 
 Risk score increases.
 
 ---
 
-#### Existing Loans
+### Rule 2
 
-If:
+Too many existing loans.
 
 ```text
 Existing Loans >= 3
@@ -181,59 +194,50 @@ Risk score increases.
 
 ---
 
-#### Duplicate Asset Request
+### Rule 3
 
-Example:
-
-```text
-Owns Car = True
-Loan Type = Car Loan
-```
+Customer already owns a car but requests a car loan.
 
 Risk score increases.
 
 ---
 
-#### Multiple PAN Enquiries
+### Rule 4
 
-If multiple enquiries exist using the same PAN number:
+Multiple enquiries using the same PAN.
 
-```text
 Risk score increases.
-```
 
 ---
 
-#### Same Phone Number with Different PANs
+### Rule 5
 
-If one phone number is associated with multiple PAN numbers:
+Same phone number linked with different PAN numbers.
 
-```text
 Risk score increases significantly.
-```
 
 ---
 
 ## Risk Classification
 
-| Risk Score | Classification |
-| ---------- | -------------- |
-| 0 – 29     | Genuine        |
-| 30 – 59    | Suspicious     |
-| 60+        | Fraud          |
+| Risk Score | Status     |
+| ---------- | ---------- |
+| 0 - 29     | Genuine    |
+| 30 - 59    | Suspicious |
+| 60+        | Fraud      |
 
 ---
 
 ## Blockchain Implementation
 
-Each enquiry is converted into a blockchain block.
+Each enquiry becomes a blockchain block.
 
 ### Block Structure
 
 ```json
 {
   "index": 1,
-  "timestamp": "2025-01-01",
+  "timestamp": "2026-01-01",
   "data": {},
   "previous_hash": "...",
   "hash": "..."
@@ -248,15 +252,12 @@ Each enquiry is converted into a blockchain block.
 * Previous Hash
 * Current Hash
 
-### Security
+### Benefits
 
-Every block references the previous block hash.
-
-If any block is modified:
-
-* Hash changes
-* Chain becomes invalid
-* Validation fails
+* Tamper Proof Records
+* Immutable Audit Trail
+* Blockchain Validation
+* Secure Data Storage
 
 ---
 
@@ -264,22 +265,15 @@ If any block is modified:
 
 ### bank_users
 
-Stores employee accounts.
-
-```json
-{
-  "employee_id": "EMP101",
-  "password": "hashed_password"
-}
-```
+Stores employee credentials.
 
 ### enquiries
 
-Stores all loan enquiries.
+Stores loan enquiry records.
 
 ### blockchain
 
-Stores blockchain records.
+Stores blockchain blocks.
 
 ---
 
@@ -287,95 +281,56 @@ Stores blockchain records.
 
 ### Authentication
 
-#### Register Employee
-
 ```http
 POST /register
-```
-
-#### Employee Login
-
-```http
 POST /login
 ```
 
----
-
 ### Loan Processing
-
-#### Create Loan Enquiry
 
 ```http
 POST /loan-enquiry
 ```
 
----
-
-### Dashboard
-
-#### Dashboard Statistics
+### Analytics
 
 ```http
 GET /dashboard-stats
-```
-
-#### Recent Enquiries
-
-```http
 GET /recent-enquiries
 ```
 
----
-
 ### Blockchain
-
-#### View Blockchain
 
 ```http
 GET /blockchain
-```
-
-#### Validate Blockchain
-
-```http
 GET /validate-blockchain
 ```
 
 ---
 
-## Screenshots
+# Application Screenshots
 
-### Login Page
+## Login Page
 
-Add screenshot:
+![Login](screenshots/bank%20login.png)
 
-```text
-screenshots/login.png
-```
+---
 
-### Dashboard
+## Dashboard
 
-Add screenshot:
+![Dashboard](screenshots/dashboard.png)
 
-```text
-screenshots/dashboard.png
-```
+---
 
-### Loan Enquiry Form
+## Loan Enquiry Form
 
-Add screenshot:
+![Loan Enquiry](screenshots/loan%20enquiry%20form.png)
 
-```text
-screenshots/enquiry.png
-```
+---
 
-### Blockchain Viewer
+## Blockchain Viewer
 
-Add screenshot:
-
-```text
-screenshots/blockchain.png
-```
+![Blockchain Viewer](screenshots/blockchain%20viewer.png)
 
 ---
 
@@ -385,33 +340,36 @@ screenshots/blockchain.png
 * OCR PAN Verification
 * Aadhaar Verification
 * JWT Authentication
-* Role-Based Access Control
 * Docker Deployment
 * Cloud Deployment
-* Kafka Event Streaming
+* Role-Based Access Control
 
 ---
 
-## Interview Highlights
+## Interview Talking Points
 
-This project demonstrates:
+### AI Component
 
-* Full Stack Development
-* REST API Development
-* MongoDB Integration
-* React Frontend Development
-* Fraud Detection Systems
-* Blockchain Concepts
-* Data Integrity Validation
-* Secure Application Design
+Currently uses rule-based fraud analysis and risk scoring. The system can later be upgraded with machine learning models trained on historical banking fraud datasets.
+
+### Blockchain Component
+
+Each enquiry is stored as a blockchain block. Hash linkage and blockchain validation ensure records cannot be modified without detection.
+
+### Database
+
+MongoDB stores employee accounts, loan enquiries, and blockchain records.
+
+### Full Stack Development
+
+The project demonstrates integration of React frontend, FastAPI backend, MongoDB database, blockchain concepts, analytics dashboards, and fraud detection logic.
 
 ---
 
 ## Author
 
 **Shubhojeet Ghosh**
-**Shreyasi Mitra**
 
 Blockchain-Based AI Loan Fraud Detection System
 
-Built using React, FastAPI, MongoDB, and Blockchain Technology.
+Built using React, FastAPI, MongoDB, Blockchain Technology, and Fraud Detection Analytics.

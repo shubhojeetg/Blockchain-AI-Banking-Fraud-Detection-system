@@ -233,8 +233,8 @@ This project demonstrates:
 
 ## Author
 
-**Shubhojeet Ghosh**
 **Shreyasi Mitra**
+**Shubhojeet Ghosh**
 
 Blockchain-Based AI Loan Fraud Detection System
 
